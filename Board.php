@@ -62,19 +62,30 @@ class Board {
     }
 
     public function render(): string {
-        $boardStr = "";
-        for ($row = 0; $row < 8; $row++) {
-            for ($col = 0; $col < 8; $col++) {
-                $piece = $this->getPieceAt(new Position($row, $col));
-                if ($piece) {
-                    $boardStr .= $piece->render() . " ";
-                } else {
-                    $boardStr .= ". ";
-                }
+        // fait par IA (merci Tom !)
+        $out = "\n    0  1  2  3  4  5  6  7\n";
+        $out .= "  +------------------------+\n";
+
+        for ($r = 0; $r <= 7; $r++) {
+            $out .= $r . " |";
+            for ($c = 0; $c <= 7; $c++) {
+                $pos = new Position($r, $c);
+                $p = $this->getPieceAt($pos);
+
+                $isDark = ($r + $c) % 2 !== 0;
+                $bg = $isDark ? "\e[48;5;240m" : "\e[48;5;245m";
+                $reset = "\e[0m";
+
+                $char = $p ? $p->render() : " ";
+
+                $out .= $bg . " " . $char . " " . $reset;
             }
-            $boardStr .= "\n";
+            $out .= "| " . $r . "\n";
         }
-        return $boardStr;
+
+        $out .= "  +------------------------+\n";
+        $out .= "    0  1  2  3  4  5  6  7\n";
+        return $out;
     }
 
 }
