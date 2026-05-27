@@ -1,6 +1,6 @@
 <?php
 
-class Factory {
+class PieceFactory {
     
     public function create(PieceType $type, PieceColor $color, Position $position): Piece {
         return match ($type) {
