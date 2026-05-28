@@ -3,7 +3,6 @@
 namespace ChessGame;
 use ChessGame\Enum\PieceColor;
 use ChessGame\Enum\PieceType;
-use ChessGame\Position;
 use ChessGame\Piece\Piece;
 use ChessGame\Contract\Renderable;
 

@@ -3,7 +3,6 @@
 namespace ChessGame\Piece;
 use ChessGame\Enum\PieceType;
 use ChessGame\Position;
-use ChessGame\Piece\Piece;
 
 class Bishop extends Piece {
     protected PieceType $type = PieceType::BISHOP;

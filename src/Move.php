@@ -1,7 +1,6 @@
 <?php
 
 namespace ChessGame;
-use ChessGame\Position;
 
 class Move {
     private Position $from;
