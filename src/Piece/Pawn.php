@@ -1,5 +1,10 @@
 <?php
 
+namespace ChessGame\Piece;
+use ChessGame\Enum\PieceType;
+use ChessGame\Enum\PieceColor;
+use ChessGame\Position;
+
 class Pawn extends Piece {
     protected PieceType $type = PieceType::PAWN;
 

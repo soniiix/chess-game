@@ -1,5 +1,7 @@
 <?php
 
+namespace ChessGame\Enum;
+
 enum PieceType {
     case KING;
     case QUEEN;

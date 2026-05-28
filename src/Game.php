@@ -1,5 +1,17 @@
 <?php
 
+namespace ChessGame;
+
+use ChessGame\Board;
+use ChessGame\Enum\PieceColor;
+use ChessGame\Enum\PieceType;
+use ChessGame\Factory\PieceFactory;
+use ChessGame\Move;
+use ChessGame\Exception\NoPieceException;
+use ChessGame\Exception\WrongTurnException;
+use ChessGame\Exception\InvalidMoveException;
+use ChessGame\Exception\OccupiedByAllyException;
+
 class Game {
     private Board $board;
     private PieceColor $currentPlayer;

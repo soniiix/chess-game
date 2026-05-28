@@ -1,5 +1,12 @@
 <?php
 
+namespace ChessGame\Piece;
+use ChessGame\Enum\PieceColor;
+use ChessGame\Enum\PieceType;
+use ChessGame\Position;
+use ChessGame\Contract\Renderable;
+use ChessGame\Board;
+
 abstract class Piece implements Renderable {
     protected PieceColor $color;
     protected Position $position;

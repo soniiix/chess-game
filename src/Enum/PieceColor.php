@@ -1,5 +1,7 @@
 <?php
 
+namespace ChessGame\Enum;
+
 enum PieceColor {
     case WHITE;
     case BLACK;

@@ -1,5 +1,8 @@
 <?php 
 
+namespace ChessGame;
+use InvalidArgumentException;
+
 class Position {
     private int $row;
     private int $column;

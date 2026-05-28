@@ -1,5 +1,9 @@
 <?php
 
+namespace ChessGame\Piece;
+use ChessGame\Enum\PieceType;
+use ChessGame\Position;
+
 class King extends Piece {
     protected PieceType $type = PieceType::KING;
 
