@@ -15,15 +15,15 @@ class Board implements Renderable {
     }
 
     public function getPieceAt(Position $position): ?Piece{
-        return $this->pieces[$position->toKey()];
+        return $this->pieces[$position->toKey()] ?? null;
     }
 
     public function hasPieceAt(Position $position): bool{
-        return $this->pieces[$position->toKey()];
+        return isset($this->pieces[$position->toKey()]);
     }
 
     public function removePieceAt(Position $position): void{
-        $this->pieces[$position->toKey()] = null;
+        unset($this->pieces[$position->toKey()]);
     }
 
     public function movePiece(Position $from, Position $to): void {
@@ -91,7 +91,7 @@ class Board implements Renderable {
         }
 
         $out .= "  +------------------------+\n";
-        $out .= "    0  1  2  3  4  5  6  7\n";
+        $out .= "    0  1  2  3  4  5  6  7\n\n";
         return $out;
     }
 

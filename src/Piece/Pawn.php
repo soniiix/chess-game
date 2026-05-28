@@ -15,7 +15,7 @@ class Pawn extends Piece {
         $targetRow = $target->getRow();
         $rowDiff = $targetRow - $currentRow;
         $columnDiff = $targetColumn - $currentColumn;
-        $direction = $this->getColor() === PieceColor::WHITE ? 1 : -1;
+        $direction = $this->getColor() === PieceColor::WHITE ? -1 : 1;
 
         // avance normale d'une case
         if ($columnDiff === 0 && $rowDiff === $direction) {
@@ -24,7 +24,7 @@ class Pawn extends Piece {
 
         // avance de 2 cases uniquement depuis la ligne de départ
         if ($columnDiff === 0 && $rowDiff === (2 * $direction)) {
-            $startRow = $this->getColor() === PieceColor::WHITE ? 1 : 6;
+            $startRow = $this->getColor() === PieceColor::WHITE ? 6 : 1;
             return $currentRow === $startRow;
         }
 
