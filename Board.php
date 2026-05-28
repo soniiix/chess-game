@@ -1,6 +1,6 @@
 <?php
 
-class Board {
+class Board implements Renderable {
     private array $pieces = [];
 
     public function placePiece(Piece $piece): void{

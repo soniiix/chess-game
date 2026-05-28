@@ -1,6 +1,6 @@
 <?php
 
-abstract class Piece implements Renderable{
+abstract class Piece implements Renderable {
     protected PieceColor $color;
     protected Position $position;
     protected PieceType $type;
