@@ -38,7 +38,8 @@ class Game {
             throw new InvalidMoveException();
         }
 
-        if ($piece->getColor() == $this->board->getPieceAt($move->getTo())->getColor()) {
+        $targetPiece = $this->board->getPieceAt($move->getTo());
+        if ($targetPiece !== null && $piece->getColor() === $targetPiece->getColor()) {
             throw new OccupiedByAllyException();
         }
 
