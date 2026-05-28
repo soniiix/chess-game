@@ -5,10 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use ChessGame\Game;
 use ChessGame\Move;
 use ChessGame\Position;
-use ChessGame\Exception\InvalidMoveException;
-use ChessGame\Exception\NoPieceException;
-use ChessGame\Exception\OccupiedByAllyException;
-use ChessGame\Exception\WrongTurnException;
+use ChessGame\Exception\ChessException;
 
 $game = new Game();
 $game->start();
@@ -35,41 +32,27 @@ $move = new Move(new Position(0, 1), new Position(2, 2));
 $game->play($move);
 echo $game->getBoard()->render();
 
-
-
-/*
-// Tentative de déplacement illégal
+// Tests d'exceptions
+echo "Déplacement d'une pièce depuis une case vide (e3 à e4) :\n";
 try {
-    echo "Tentative de déplacement du pion blanc de e4 à e5 (illégal) :\n";
-    $move = new Move(new Position(4, 4), new Position(3, 4));
+    $move = new Move(new Position(5, 4), new Position(4, 4));
     $game->play($move);
-} catch (InvalidMoveException $e) {
-    echo "Erreur : " . $e->getMessage() . "\n";
+} catch (ChessException $e) {
+    echo "Erreur : " . $e->getMessage() . "\n\n";
 }
 
-// Tentative de déplacement d'une pièce qui n'existe pas
+echo "Déplacement d'une pièce d'une couleur qui n'est pas au tour de jouer (pion noir de e5 à e4) :\n";
 try {
-    echo "Tentative de déplacement d'une pièce qui n'existe pas (h3 à h4) :\n";
-    $move = new Move(new Position(7, 7), new Position(6, 7));
+    $move = new Move(new Position(3, 4), new Position(4, 4));
     $game->play($move);
-} catch (NoPieceException $e) {
-    echo "Erreur : " . $e->getMessage() . "\n";
+} catch (ChessException $e) {
+    echo "Erreur : " . $e->getMessage() . "\n\n";
 }
 
-// Tentative de déplacement d'une pièce adverse
+echo "Déplacement d'une pièce vers une case occupée par une pièce alliée (pion blanc de d2 à e4) :\n";
 try {
-    echo "Tentative de déplacement d'une pièce adverse (c6 à d4) :\n";
-    $move = new Move(new Position(2, 2), new Position(4, 3));
+    $move = new Move(new Position(6, 3), new Position(4, 4));
     $game->play($move);
-} catch (WrongTurnException $e) {
-    echo "Erreur : " . $e->getMessage() . "\n";
+} catch (ChessException $e) {
+    echo "Erreur : " . $e->getMessage() . "\n\n";
 }
-
-// Tentative de déplacement d'une pièce à une position occupée par une pièce alliée
-try {
-    echo "Tentative de déplacement d'une pièce à une position occupée par une pièce alliée (f3 à e4) :\n";
-    $move = new Move(new Position(5, 5), new Position(4, 4));
-    $game->play($move);
-} catch (OccupiedByAllyException $e) {
-    echo "Erreur : " . $e->getMessage() . "\n";
-}*/
